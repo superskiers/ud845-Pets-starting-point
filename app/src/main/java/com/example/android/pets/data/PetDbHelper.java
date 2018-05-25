@@ -4,11 +4,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
 
-
 import com.example.android.pets.data.PetContract.PetEntry;
 
 
-
+//Database helper for Pets app. Manages database creation and version management.
 public class PetDbHelper extends SQLiteOpenHelper {
 
     public static final String LOG_TAG = PetDbHelper.class.getSimpleName();
@@ -36,8 +35,10 @@ public class PetDbHelper extends SQLiteOpenHelper {
                 + PetEntry.COLUMN_PET_BREED + " TEXT, "
                 + PetEntry.COLUMN_PET_GENDER + " INTEGER NOT NULL, "
                 + PetEntry.COLUMN_PET_WEIGHT + " INTEGER NOT NULL DEFAULT 0);";
+
         //Execute the SQL Statement
         db.execSQL(SQL_CREATE_PETS_TABLE);
+
     }
 
     //This is called when the database needs to be upgraded
