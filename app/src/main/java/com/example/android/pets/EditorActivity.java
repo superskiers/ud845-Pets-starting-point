@@ -27,6 +27,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+
 import com.example.android.pets.data.PetContract.PetEntry;
 
 /**
@@ -47,11 +48,11 @@ public class EditorActivity extends AppCompatActivity {
     private Spinner mGenderSpinner;
 
     /**
-     * Gender of the pet. The possible values are:
-     * 0 for unknown gender, 1 for male, 2 for female.
+     * Gender of the pet. The possible valid values are in the PetContract.java file:
+     * {@link PetEntry#GENDER_UNKNOWN}, {@link PetEntry#GENDER_MALE}, or
+     * {@link PetEntry#GENDER_FEMALE}.
      */
     private int mGender = PetEntry.GENDER_UNKNOWN;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,11 +90,11 @@ public class EditorActivity extends AppCompatActivity {
                 String selection = (String) parent.getItemAtPosition(position);
                 if (!TextUtils.isEmpty(selection)) {
                     if (selection.equals(getString(R.string.gender_male))) {
-                        mGender = PetEntry.GENDER_MALE; // Male
+                        mGender = PetEntry.GENDER_MALE;
                     } else if (selection.equals(getString(R.string.gender_female))) {
-                        mGender = PetEntry.GENDER_FEMALE; // Female
+                        mGender = PetEntry.GENDER_FEMALE;
                     } else {
-                        mGender = PetEntry.GENDER_UNKNOWN; // Unknown
+                        mGender = PetEntry.GENDER_UNKNOWN;
                     }
                 }
             }
@@ -101,7 +102,7 @@ public class EditorActivity extends AppCompatActivity {
             // Because AdapterView is an abstract class, onNothingSelected must be defined
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-                mGender = PetEntry.GENDER_UNKNOWN; // Unknown
+                mGender = PetEntry.GENDER_UNKNOWN;
             }
         });
     }
